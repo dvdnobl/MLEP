@@ -35,3 +35,9 @@ nonbinding_plot_15 = dist_15_nonbinding['mlePeak.15'].plot.kde()
 MW_stat, MW_p = sp.stats.mannwhitneyu(dist_15_binding['mlePeak.15'], dist_15_nonbinding['mlePeak.15'], alternative='two-sided')
 
 KS_stat, KS_p = sp.stats.ks_2samp(dist_15_binding['mlePeak.15'], dist_15_nonbinding['mlePeak.15'])
+
+
+#KS_p = 3.168474975481327e-27
+#KS_stat = 0.3146807109940751
+#MW_p = 3.1892154629370733e-23
+#MW_stat= 394413.0
