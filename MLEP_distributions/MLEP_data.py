@@ -22,22 +22,22 @@ dist_15_nonbinding = screen_15.loc[screen_15['score'] <= 1]
 #KDE plots for screen 15 
 binding_plot_15 = dist_15_binding['mlePeak.15'].plot.kde()
 nonbinding_plot_15 = dist_15_nonbinding['mlePeak.15'].plot.kde()
+all_known_plot_15 = screen_15['mlePeak.15'].plot.kde()
 
-#To see distributions for screen 18, uncomment below
+#Statisical tests of binding vs. nonbinding (a)
+MW_stat_a, MW_p_a = sp.stats.mannwhitneyu(dist_15_binding['mlePeak.15'], dist_15_nonbinding['mlePeak.15'], alternative='two-sided')
+KS_stat_a, KS_p_a = sp.stats.ks_2samp(dist_15_binding['mlePeak.15'], dist_15_nonbinding['mlePeak.15'])
 
-#dist_18_binding = screen_18.loc[screen_18['score'] >= 2]
-#dist_18_nonbinding = screen_18.loc[screen_18['score'] <= 1]
+#KS_p_a = 3.168474975481327e-27
+#KS_stat_a = 0.3146807109940751
+#MW_p_a = 3.1892154629370733e-23
+#MW_stat_a = 394413.0
 
-#KDE plots for screen 15 
-#binding_plot_18 = dist_18_binding['mlePeak.18'].plot.kde()
-#nonbinding_plot_18 = dist_18_nonbinding['mlePeak.18'].plot.kde()
+#Statistical tests of binding vs. all known (b)
+MW_stat_b, MW_p_b = sp.stats.mannwhitneyu(dist_15_binding['mlePeak.15'], screen_15['mlePeak.15'], alternative='two-sided')
+KS_stat_b, KS_p_b = sp.stats.ks_2samp(dist_15_binding['mlePeak.15'], screen_15['mlePeak.15'])
 
-MW_stat, MW_p = sp.stats.mannwhitneyu(dist_15_binding['mlePeak.15'], dist_15_nonbinding['mlePeak.15'], alternative='two-sided')
-
-KS_stat, KS_p = sp.stats.ks_2samp(dist_15_binding['mlePeak.15'], dist_15_nonbinding['mlePeak.15'])
-
-
-#KS_p = 3.168474975481327e-27
-#KS_stat = 0.3146807109940751
-#MW_p = 3.1892154629370733e-23
-#MW_stat= 394413.0
+#KS_p_b = 4.210325923173611e-18
+#KS_stat_b = 0.250130821559393
+#MW_p_b = 7.69044204590104e-16
+#MW_stat_b = 471207.0
